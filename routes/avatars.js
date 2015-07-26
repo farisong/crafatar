@@ -46,7 +46,7 @@ module.exports = function(req, res) {
 
   try {
     helpers.get_avatar(uuid, helm, size, function(err, status, image, hash) {
-      logging.log(uuid + " - " + human_status[status]);
+      // logging.log(uuid + " - " + human_status[status]);
       if (err) {
         logging.error(uuid + " " + err);
         if (err.code == "ENOENT") {
@@ -78,7 +78,7 @@ module.exports = function(req, res) {
 
   function handle_default(http_status, img_status) {
     if (def && def != "steve" && def != "alex") {
-      logging.log("status: 301");
+      // logging.log("status: 301");
       res.writeHead(301, {
         "Cache-Control": "max-age=" + config.browser_cache_time + ", public",
         "Response-Time": new Date() - start,
@@ -96,7 +96,7 @@ module.exports = function(req, res) {
   }
 
   function sendimage(http_status, img_status, image) {
-    logging.log("status: " + http_status);
+    // logging.log("status: " + http_status);
     res.writeHead(http_status, {
       "Content-Type": "image/png",
       "Cache-Control": "max-age=" + config.browser_cache_time + ", public",
