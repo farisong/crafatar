@@ -44,7 +44,7 @@ exp.draw_head = function(skin_canvas, model_ctx, scale) {
 // parts are labeled as if drawn from the skin's POV
 exp.draw_body = function(skin_canvas, model_ctx, scale) {
   if (skin_canvas.height == 32 * scale) {
-    logging.log("old skin");
+    // logging.log("old skin");
     //Left Leg
     //Left Leg - Front
     model_ctx.setTransform(1,-0.5,0,1.2,0,0);
@@ -85,7 +85,7 @@ exp.draw_body = function(skin_canvas, model_ctx, scale) {
     model_ctx.scale(-1,1);
     model_ctx.drawImage(skin_canvas, 44*scale, 16*scale, 4*scale, 4*scale, -16*scale, 16*scale, 4*scale, 4*scale);
   } else {
-    logging.log("new skin");
+    // logging.log("new skin");
     //Left Leg
     //Left Leg - Front
     model_ctx.setTransform(1,-0.5,0,1.2,0,0);
@@ -151,19 +151,19 @@ exp.draw_model = function(uuid, img, scale, helm, body, callback) {
     //Scale it
     scale_image(skin_ctx.getImageData(0,0,64,original_height), skin_ctx, 0, 0, scale);
     if (body) {
-      logging.log("drawing body");
+      // logging.log("drawing body");
       exp.draw_body(skin_canvas, model_ctx, scale);
     }
-    logging.log("drawing head");
+    // logging.log("drawing head");
     exp.draw_head(skin_canvas, model_ctx, scale);
     if (helm) {
-      logging.log("drawing helmet");
+      // logging.log("drawing helmet");
       exp.draw_helmet(skin_canvas, model_ctx, scale);
     }
 
     model_canvas.toBuffer(function(err, buf){
       if (err) {
-        logging.log("error creating buffer: " + err);
+        // logging.log("error creating buffer: " + err);
       }
       callback(err, buf);
     });

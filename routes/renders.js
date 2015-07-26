@@ -73,11 +73,11 @@ module.exports = function(req, res) {
         } else if (err) {
           http_status = 503;
         }
-        logging.log("matches: " + matches);
-        logging.log("Etag: " + req.headers["if-none-match"]);
-        sendimage(http_status, status, image);
+        // logging.log("matches: " + matches);
+        // logging.log("Etag: " + req.headers["if-none-match"]);
+        // sendimage(http_status, status, image);
       } else {
-        logging.log("image not found, using default.");
+        // logging.log("image not found, using default.");
         handle_default(404, status);
       }
     });
@@ -111,7 +111,7 @@ module.exports = function(req, res) {
         // we render the default skins, but not custom images
         renders.draw_model(uuid, buf, scale, helm, body, function(err, def_img) {
           if (err) {
-            logging.log("error while rendering default image: " + err);
+            logging.error("error while rendering default image: " + err);
           }
           sendimage(http_status, img_status, def_img);
         });

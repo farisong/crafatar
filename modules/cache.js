@@ -88,7 +88,7 @@ exp.info = function(callback) {
 
 // sets the timestamp for +uuid+ and its face file's date to now
 exp.update_timestamp = function(uuid, hash) {
-  logging.log(uuid + " cache: updating timestamp");
+  //logging.log(uuid + " cache: updating timestamp");
   var time = new Date().getTime();
   // store uuid in lower case if not null
   uuid = uuid && uuid.toLowerCase();
@@ -98,7 +98,7 @@ exp.update_timestamp = function(uuid, hash) {
 
 // create the key +uuid+, store +hash+ and time
 exp.save_hash = function(uuid, hash) {
-  logging.log(uuid + " cache: saving hash");
+  //logging.log(uuid + " cache: saving hash");
   var time = new Date().getTime();
   // store shorter null byte instead of "null"
   hash = hash || ".";
@@ -108,7 +108,7 @@ exp.save_hash = function(uuid, hash) {
 };
 
 exp.remove_hash = function(uuid) {
-  logging.log(uuid + " cache: deleting hash");
+  //logging.log(uuid + " cache: deleting hash");
   redis.del(uuid.toLowerCase(), "h", "t");
 };
 

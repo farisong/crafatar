@@ -36,13 +36,13 @@ var get_username_url = function(name, callback) {
   }, function(error, response, body) {
     if (!error && response.statusCode == 301) {
       // skin_url received successfully
-      logging.log(name + " skin url received");
+      // logging.log(name + " skin url received");
       callback(null, response.headers.location);
     } else if (error) {
       callback(error, null);
     } else if (response.statusCode == 404) {
       // skin (or user) doesn't exist
-      logging.log(name + " has no skin");
+      // logging.log(name + " has no skin");
       callback(null, null);
     } else if (response.statusCode == 429) {
       // Too Many Requests
@@ -69,13 +69,13 @@ var get_uuid_url = function(uuid, callback) {
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       // profile downloaded successfully
-      logging.log(uuid + " profile downloaded");
+      // logging.log(uuid + " profile downloaded");
       callback(null, extract_skin_url(JSON.parse(body)));
     } else if (error) {
       callback(error, null);
     } else if (response.statusCode == 204 || response.statusCode == 404) {
       // we get 204 No Content when UUID doesn't exist (including 404 in case they change that)
-      logging.log(uuid + " uuid does not exist");
+      // logging.log(uuid + " uuid does not exist");
       callback(null, null);
     } else if (response.statusCode == 429) {
       // Too Many Requests
@@ -117,7 +117,7 @@ exp.get_skin = function(url, callback) {
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       // skin downloaded successfully
-      logging.log("downloaded skin");
+      // logging.log("downloaded skin");
       logging.debug(url);
       callback(null, body);
     } else {
@@ -151,7 +151,7 @@ exp.save_skin = function(uuid, hash, outpath, callback) {
       } else {
         fs.writeFile(outpath, img, "binary", function(err){
           if (err) {
-            logging.log(err);
+            // logging.log(err);
           }
           callback(null, img);
         });
