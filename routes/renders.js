@@ -75,7 +75,7 @@ module.exports = function(req, res) {
         }
         // logging.log("matches: " + matches);
         // logging.log("Etag: " + req.headers["if-none-match"]);
-        // sendimage(http_status, status, image);
+        sendimage(http_status, status, image);
       } else {
         // logging.log("image not found, using default.");
         handle_default(404, status);
