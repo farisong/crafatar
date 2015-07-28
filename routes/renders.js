@@ -24,7 +24,7 @@ module.exports = function(req, res) {
 
   // validate type
   if (raw_type != "body" && raw_type != "head") {
-    res.writeHead(422, {
+    res.writeHead(404, {
       "Content-Type": "text/plain",
       "Response-Time": new Date() - start
     });
@@ -40,18 +40,18 @@ module.exports = function(req, res) {
   var etag = null;
 
   if (scale < config.min_scale || scale > config.max_scale) {
-    res.writeHead(422, {
+    res.writeHead(404, {
       "Content-Type": "text/plain",
       "Response-Time": new Date() - start
     });
-    res.end("422 Invalid Scale");
+    res.end("404 Invalid Scale");
     return;
   } else if (!helpers.uuid_valid(uuid)) {
-    res.writeHead(422, {
+    res.writeHead(404, {
       "Content-Type": "text/plain",
       "Response-Time": new Date() - start
     });
-    res.end("422 Invalid UUID");
+    res.end("404 Invalid UUID");
     return;
   }
 

@@ -26,14 +26,14 @@ module.exports = function(req, res) {
   if (size < config.min_size || size > config.max_size) {
     // "Unprocessable Entity", valid request, but semantically erroneous:
     // https://tools.ietf.org/html/rfc4918#page-78
-    res.writeHead(422, {
+    res.writeHead(404, {
       "Content-Type": "text/plain",
       "Response-Time": new Date() - start
     });
     res.end("Invalid Size");
     return;
   } else if (!helpers.uuid_valid(uuid)) {
-    res.writeHead(422, {
+    res.writeHead(404, {
       "Content-Type": "text/plain",
       "Response-Time": new Date() - start
     });

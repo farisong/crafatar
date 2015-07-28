@@ -13,7 +13,7 @@ module.exports = function(req, res) {
   var etag = null;
 
   if (!helpers.uuid_valid(uuid)) {
-    res.writeHead(422, {
+    res.writeHead(404, {
       "Content-Type": "text/plain",
       "Response-Time": new Date() - start
     });
